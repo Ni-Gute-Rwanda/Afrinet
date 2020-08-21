@@ -7,6 +7,27 @@
 * {
   margin: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: 0 0 2px rgb(3, 6, 145);
+  background-color: var(--main-color);
+  border-radius: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: var(--secondary-color);
+}
+
+/* Handle on hover */
+
 body {
   background: var(--main-color);
   font-family: Arial, Helvetica, sans-serif;
@@ -130,6 +151,10 @@ a {
   .contact-us-wraper {
     flex-direction: column;
   }
+  .servive-image {
+    width: 180px;
+    height: auto;
+  }
 }
 
 /* media queries of nav bar ends here */
@@ -146,7 +171,7 @@ a {
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 1.6rem;
+  margin-top: 4.6rem;
 }
 
 .svg {
@@ -254,8 +279,8 @@ a {
 }
 .servive-image {
   border: solid 1px var(--secondary-color);
-  width: 300px;
-  height: 300px;
+  width: 380px;
+  height: 330px;
   border-radius: 5px;
   margin-right: 2rem;
   margin: auto;
@@ -421,5 +446,6 @@ button:focus {
   outline: none;
 }
 .kwikina {
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
