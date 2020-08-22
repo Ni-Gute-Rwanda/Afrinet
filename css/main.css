@@ -1,11 +1,12 @@
 /* common css */
 :root {
-  --main-color: #e1ebf3;
-  --secondary-color: #6d5acf;
+  --main-color: #f8fcff;
+  --secondary-color: #5f4dc7;
   --link-color: rgb(248, 252, 6);
 }
 * {
   margin: 0;
+  padding: 0;
 }
 html {
   scroll-behavior: smooth;
@@ -46,11 +47,16 @@ p {
 .main-btn {
   background-color: var(--secondary-color);
   border-radius: 20px;
-  padding-left: 1rem;
+  padding: 0.7rem 1.7rem;
+  border: none;
+  margin-right: 1rem;
+}
+.main-btn a {
+  color: var(--link-color);
 }
 .main-btn:hover {
   background: rgb(75, 64, 168);
-  color: var(--secondary-color);
+  color: var(--main-color);
 }
 .quick-link {
   color: var(--link-color);
@@ -64,8 +70,14 @@ a {
 /*action  */
 .nav {
   display: flex;
-  justify-content: space-between;
-  margin-top: 1.8rem;
+  justify-content: space-around;
+  background: var(--main-color);
+  align-items: center;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .nav-links {
   display: flex;
@@ -75,6 +87,7 @@ a {
 .nav-link {
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
+  color: var(--link-color);
 }
 
 .nav-link:hover {
@@ -89,10 +102,6 @@ a {
 @media screen and (max-width: 700px) {
   .hamburger {
     cursor: pointer;
-    position: absolute;
-    right: 5%;
-    top: 40px;
-    transform: translate(-5%, -40%);
     z-index: 2;
   }
   .line {
@@ -102,8 +111,8 @@ a {
     background-color: var(--secondary-color);
   }
 
-  nav {
-    position: relative;
+  .nav {
+    justify-content: space-between;
   }
   .nav-links {
     position: fixed;
@@ -112,13 +121,12 @@ a {
       var(--main-color),
       var(--secondary-color)
     );
-    /* opacity: 0.7; */
     height: 100%;
     width: 100%;
     flex-direction: column;
     clip-path: circle(1000px at 90% -10px);
     -webkit-clip-path: circle(1000px at 90% -10px);
-    transition: all 1s ease-in;
+    transition: all 500ms ease-in;
     top: 0;
     left: -20;
     right: 0;
@@ -128,24 +136,22 @@ a {
 
   .nav-link {
     margin: auto;
-    border: 1px solid var(--link-color);
     border-radius: 20px;
     background-color: var(--secondary-color);
   }
-  .nav-link a {
-    color: var(--link-color);
-  }
-
   .nav-links.open {
     clip-path: circle(10px at 90% 50px);
     -webkit-clip-path: circle(10px at 90% -10px);
+  }
+  .nav-link a {
+    color: var(--link-color);
   }
   .introduction {
     flex-direction: column-reverse;
     text-align: center;
   }
   .goals-section {
-    margin-top: 30rem;
+    /* margin-top: 30rem; */
     flex-direction: column;
     margin: auto;
     padding: 0.1rem;
@@ -160,10 +166,6 @@ a {
   }
   .contact-us-wraper {
     flex-direction: column;
-  }
-  .servive-image {
-    width: 180px;
-    height: auto;
   }
 }
 
@@ -201,21 +203,11 @@ a {
   font-size: 2.5rem;
 }
 
-.call-to-act {
-  border-radius: 20px;
-  border: none;
-  color: var(--link-color);
-  margin-left: 1rem;
-}
-.un-attractive {
-  color: var(--secondary-color);
-  border: 2px solid var(--secondary-color);
-  background-color: transparent;
-}
 .link-btns {
   margin-top: 3rem;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 .goals-section {
   display: flex;
@@ -224,19 +216,18 @@ a {
   max-width: 1000px;
   background: var(--main-color);
   margin: auto;
-  box-shadow: 0 0 8px gray;
-  border-radius: 5px;
   padding: 1rem;
 }
 .icon-image {
   width: 150px;
   height: 150px;
   align-items: center;
-  border: 1.3px solid var(--link-color);
+  border: 1.3px solid var(--secondary-color);
   border-radius: 200px;
 }
+
 .each-goal {
-  margin: 1rem;
+  margin: 0.5rem;
   box-shadow: 0 0 13px black;
   text-align: center;
   padding: 1rem;
@@ -244,14 +235,10 @@ a {
   border-radius: 8px;
 }
 .each-goal:hover {
-  border: 1px solid var(--link-color);
+  border: 1px solid var(--secondary-color);
 }
 .goals-wraper {
-  background: linear-gradient(
-    to top,
-    var(--secondary-color),
-    var(--main-color)
-  );
+  background: linear-gradient(to top, rgb(134, 151, 206), var(--main-color));
 }
 .each-goal h4 {
   color: var(--link-color);
@@ -259,11 +246,13 @@ a {
   font-size: 1.2rem;
   padding: 1rem;
 }
+.each-goal p {
+  color: var(--main-color);
+}
 .services-section {
   width: 90%;
   max-width: 1050px;
   margin: auto;
-  padding: 2rem;
 }
 .title {
   text-align: center;
@@ -280,21 +269,17 @@ a {
 .each-service-card {
   border-radius: 5px;
   box-shadow: 0 0 3px;
-  margin: 1rem;
-  padding: 2rem;
+  margin: 1rem 0;
+  padding: 0.7rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
 }
-.servive-image {
-  border: solid 1px var(--secondary-color);
+.service-image {
   width: 380px;
-  height: 330px;
-  border-radius: 5px;
-  margin-right: 2rem;
-  margin: auto;
 }
+
 .each-service-card h4 {
   color: var(--secondary-color);
   padding: 1.5rem;
@@ -316,7 +301,7 @@ a {
 }
 .description {
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 0;
 }
 .about h1 {
   padding: 1rem;
@@ -409,15 +394,13 @@ span {
 }
 .contact {
   box-shadow: 0 0 3px black;
-  border-radius: 3px;
+  border-radius: 5px;
   width: 90%;
   max-width: 1000px;
   margin: auto;
   margin-bottom: 2rem;
 }
 .contact-us-wraper {
-  box-shadow: 0 0 3px var(--secondary-color);
-  border-radius: 3px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -477,4 +460,7 @@ button:focus {
 }
 .hidden {
   display: none;
+}
+.service-image {
+  width: 100%;
 }
