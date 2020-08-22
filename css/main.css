@@ -2,7 +2,7 @@
 :root {
   --main-color: #e1ebf3;
   --secondary-color: #6d5acf;
-  --link-color: #fffd01;
+  --link-color: rgb(248, 252, 6);
 }
 * {
   margin: 0;
@@ -107,14 +107,19 @@ a {
   }
   .nav-links {
     position: fixed;
-    background-color: var(--link-color);
-    height: 100vh;
+    background: linear-gradient(
+      to bottom,
+      var(--main-color),
+      var(--secondary-color)
+    );
+    /* opacity: 0.7; */
+    height: 100%;
     width: 100%;
     flex-direction: column;
     clip-path: circle(1000px at 90% -10px);
     -webkit-clip-path: circle(1000px at 90% -10px);
-    transition: all 2s ease-in;
-    top: auto;
+    transition: all 1s ease-in;
+    top: 0;
     left: -20;
     right: 0;
     margin: auto;
