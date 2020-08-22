@@ -32,6 +32,9 @@ body {
   background: var(--main-color);
   font-family: Arial, Helvetica, sans-serif;
 }
+p {
+  margin-bottom: 2rem;
+}
 .light {
   color: var(--link-color);
 }
@@ -448,4 +451,19 @@ button:focus {
 .kwikina {
   font-size: 0.9rem;
   margin-top: 0.5rem;
+}
+.read-more {
+  background-color: var(--secondary-color);
+  padding: 0.3rem 1.3rem;
+  border: 1px solid var(--link-color);
+  border-radius: 20px;
+}
+.read-more a {
+  color: black;
+}
+.read-more:hover {
+  background-color: var(--link-color);
+}
+.hidden {
+  display: none;
 }

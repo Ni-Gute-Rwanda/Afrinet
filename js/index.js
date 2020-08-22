@@ -1,8 +1,14 @@
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
-const line = document.getElementsByClassName("line");
-const logo = document.querySelector(".logo");
+const readMore = document.querySelector(".read-more");
+const hidden = document.querySelector(".hidden");
+
+console.log(readMore, hidden);
 
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("open");
+});
+
+readMore.addEventListener("click", () => {
+  hidden.classList.remove("hidden");
 });
