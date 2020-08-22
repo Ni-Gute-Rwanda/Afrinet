@@ -172,7 +172,7 @@ a {
 /* media queries of nav bar ends here */
 
 .main-screen {
-  min-height: 95vh;
+  min-height: 90vh;
   width: 95%;
   max-width: 1000px;
   margin: auto;
@@ -183,7 +183,7 @@ a {
   justify-content: center;
   align-items: center;
   margin: auto;
-  margin-top: 4.6rem;
+  margin-top: 7.6rem;
 }
 
 .svg {
@@ -372,8 +372,7 @@ span {
 .social-medias {
   list-style: none;
   display: flex;
-  justify-content: center;
-  margin-right: 2rem;
+  justify-content: space-around;
   text-align: center;
 }
 .each-social {
@@ -381,8 +380,10 @@ span {
   border: 1px solid var(--secondary-color);
   width: 30px;
   height: 30px;
-  margin: 0.7rem;
   background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .each-social:hover {
