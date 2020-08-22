@@ -34,6 +34,8 @@ body {
 }
 p {
   margin-bottom: 2rem;
+  margin-top: 1rem;
+  line-height: 1.5rem;
 }
 .light {
   color: var(--link-color);
@@ -306,6 +308,10 @@ a {
   text-align: center;
   color: var(--main-color);
   line-height: 1.5rem;
+}
+.description {
+  align-items: center;
+  padding: 1rem 2rem;
 }
 .about h1 {
   padding: 1rem;
