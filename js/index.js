@@ -8,7 +8,9 @@ console.log(readMore, hidden);
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("open");
 });
+navLinks.addEventListener("click", () => navLinks.classList.toggle("open"));
 
 readMore.addEventListener("click", () => {
   hidden.classList.remove("hidden");
+  readMore.classList.toggle("hidden");
 });

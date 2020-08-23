@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="shortcut icon"
+      href="/Afrinet//images/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="/Afrinet//images/favicon.ico" type="image/x-icon" />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
@@ -11,7 +17,8 @@
     <title>Welcome| AFRINET</title>
   </head>
   <body>
-    <section class="main-screen">
+    <nav class="nav">
+      <h2 class="logo semi-light">AFRINET</h2>
       <!-- hamburger -->
       <div class="hamburger">
         <div class="line"></div>
@@ -19,21 +26,20 @@
         <div class="line"></div>
       </div>
       <!-- hamburger -->
+      <ul class="nav-links open">
+        <li class="nav-link"><a href="">Home</a></li>
+        <li class="nav-link"><a href="#service-sec">Services</a></li>
+        <li class="nav-link"><a href="#about">About Us</a></li>
+        <li class="nav-link">
+          <a href="https://nigute.co.rw/" target="_blank">Blog</a>
+        </li>
+        <li class="nav-link main-btn">
+          <a href="#contact" class="quick-link">Let's Talk</a>
+        </li>
+      </ul>
+    </nav>
 
-      <nav class="nav">
-        <h2 class="logo semi-light">AFRINET</h2>
-        <ul class="nav-links">
-          <li class="nav-link"><a href="">Home</a></li>
-          <li class="nav-link"><a href="#service-sec">Services</a></li>
-          <li class="nav-link"><a href="#about">About Us</a></li>
-          <li class="nav-link">
-            <a href="https://nigute.co.rw/" target="_blank">Blog</a>
-          </li>
-          <li class="nav-link main-btn">
-            <a href="#contact" class="quick-link">Let's Talk</a>
-          </li>
-        </ul>
-      </nav>
+    <section class="main-screen">
       <!-- end oh naviation -->
       <div class="introduction">
         <div class="intro">
@@ -49,10 +55,10 @@
           <p>Work with Us,</p>
 
           <div class="link-btns">
-            <button class="call-to-act un-attractive nav-link">
-              <a href="#contact" Contact Us>Contact Us </a>
+            <button class="main-btn">
+              <a href="#contact">Contact Us </a>
             </button>
-            <button class="call-to-act nav-link main-btn">
+            <button class="main-btn">
               <a href="#service-sec">Services</a>
             </button>
           </div>
@@ -119,14 +125,16 @@
       </section>
     </div>
 
-    <section class="services-section" id="service-sec">
-      <h2 class="title">Our Services</h2>
+    <section class="services-section">
+      <h2 class="title" id="service-sec">Our Services</h2>
       <div class="each-service-card">
-        <img
-          src="/Afrinet//images/web desiggn.svg"
-          alt=""
-          class="servive-image"
-        />
+        <div class="service-image-div">
+          <img
+            src="/Afrinet//images/web desiggn.svg"
+            alt=""
+            class="service-image"
+          />
+        </div>
         <div class="description">
           <h4>Web Design And Development</h4>
           <p>
@@ -145,11 +153,13 @@
         </div>
       </div>
       <div class="each-service-card">
-        <img
-          src="/Afrinet//images/networking.jpg"
-          alt=""
-          class="servive-image"
-        />
+        <div class="service-image-div">
+          <img
+            src="/Afrinet//images/networking.jpg"
+            alt=""
+            class="service-image"
+          />
+        </div>
         <div class="description">
           <h4>Computer Networking Services</h4>
 
@@ -165,7 +175,13 @@
         </div>
       </div>
       <div class="each-service-card">
-        <img src="/Afrinet//images/business.svg" alt="" class="servive-image" />
+        <div class="service-image-div">
+          <img
+            src="/Afrinet//images/business.svg"
+            alt=""
+            class="service-image"
+          />
+        </div>
         <div class="description">
           <h4>Consultancy in Business and Technology</h4>
           <p>
