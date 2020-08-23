@@ -1,8 +1,8 @@
 /* common css */
 :root {
   --main-color: #f8fcff;
-  --secondary-color: #5f4dc7;
-  --link-color: rgb(248, 252, 6);
+  --secondary-color: #8131dd;
+  --link-color: rgb(252, 236, 21);
 }
 * {
   margin: 0;
@@ -26,8 +26,6 @@ html {
   border-radius: 10px;
   background: var(--secondary-color);
 }
-
-/* Handle on hover */
 
 body {
   background: var(--main-color);
@@ -72,6 +70,7 @@ a {
   display: flex;
   justify-content: space-around;
   background: var(--main-color);
+  box-shadow: 0 0 5px 0 rgb(196, 195, 195);
   align-items: center;
   padding: 1rem;
   position: fixed;
@@ -276,9 +275,6 @@ a {
   align-items: center;
   text-align: center;
 }
-.service-image {
-  width: 380px;
-}
 
 .each-service-card h4 {
   color: var(--secondary-color);
@@ -372,7 +368,7 @@ span {
 .social-medias {
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
 }
 .each-social {
@@ -384,6 +380,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0.5rem;
 }
 
 .each-social:hover {
@@ -464,4 +461,10 @@ button:focus {
 }
 .service-image {
   width: 100%;
+}
+
+@media screen and (min-width: 700px) {
+  .service-image {
+    width: 380px;
+  }
 }
