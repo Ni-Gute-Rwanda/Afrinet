@@ -1,8 +1,8 @@
 /* common css */
 :root {
   --main-color: #f8fcff;
-  --secondary-color: #293757;
-  --link-color: rgb(252, 236, 21);
+  --secondary-color: #2d3f69;
+  --link-color: rgb(239, 255, 11);
 }
 * {
   margin: 0;
