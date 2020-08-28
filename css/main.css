@@ -1,7 +1,7 @@
 /* common css */
 :root {
   --main-color: #f8fcff;
-  --secondary-color: #8131dd;
+  --secondary-color: #293757;
   --link-color: rgb(252, 236, 21);
 }
 * {
@@ -54,9 +54,12 @@ p {
   font-size: 1.2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.main-btn a:hover {
+  color: var(--secondary-color);
+}
 .main-btn:hover {
-  background: rgb(75, 64, 168);
-  color: var(--main-color);
+  background: transparent;
+  border: solid 1px var(--secondary-color);
 }
 .quick-link {
   color: var(--link-color);
@@ -65,6 +68,7 @@ p {
 a {
   text-decoration: none;
   font-weight: 500;
+  color: var(--secondary-color);
 }
 
 /*action  */
@@ -127,7 +131,7 @@ a {
     flex-direction: column;
     clip-path: circle(1000px at 90% -10px);
     -webkit-clip-path: circle(1000px at 90% -10px);
-    transition: all 500ms ease-in;
+    transition: all 100ms ease-in;
     top: 0;
     left: -20;
     right: 0;
@@ -199,7 +203,7 @@ a {
 
 .intro p {
   font-size: 1.4rem;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .slogan {
   text-align: center;
@@ -262,7 +266,7 @@ a {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  padding: 1rem;
+  padding: 0.4rem 1rem;
   background-color: var(--secondary-color);
   border-radius: 5px;
   max-width: 800px;
@@ -300,6 +304,26 @@ a {
   color: var(--main-color);
   line-height: 1.5rem;
 }
+.testmonials {
+  width: 85%;
+  max-width: 800px;
+  margin: auto;
+  padding: 0.9rem;
+  padding-bottom: 2rem;
+  text-align: center;
+}
+.testmonials-title {
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
+}
+.testmonials-name {
+  color: var(--secondary-color);
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding-top: 0.8rem;
+  font-style: italic;
+}
 .description {
   align-items: center;
   padding: 1rem 0;
@@ -319,6 +343,9 @@ footer {
 span {
   color: black;
 }
+.sp-span {
+  color: var(--link-color);
+}
 .team {
   width: 95%;
   max-width: 1050px;
@@ -327,6 +354,7 @@ span {
   border-radius: 5px;
   box-shadow: 0 0 3px var(--secondary-color);
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 .leading-team {
   display: grid;
@@ -411,12 +439,16 @@ span {
   padding: 1rem;
   margin: auto;
 }
-.email {
+input {
   padding: 0.6rem 2rem;
   background-color: transparent;
   border-radius: 200px;
   margin: 1rem;
   border: 1px solid var(--secondary-color);
+}
+input:focus {
+  outline: none;
+  border: 2px solid var(--secondary-color);
 }
 textarea {
   margin: 1rem;

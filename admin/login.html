@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="admin.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="login">
+      <h1>AFRINET</h1>
+      <h2>Login to continue</h2>
+      <form class="form" id="login-form">
+        <input type="text" name="email" placeholder="Your Email" />
+        <input
+          type="password"
+          name="password"
+          placeholder="Your password"
+        /><br />
+        <button type="submit" class="submit">Continue</button>
+        <button
+          type="button"
+          id="google"
+          class="submit"
+          onclick="googleSignIn()"
+        >
+          <i class="fa fa-google"></i> SignIn with Google
+        </button>
+      </form>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="firebase.js"></script>
+    <script>
+      auth.onAuthStateChanged(function (user) {
+        if (user) {
+          location.href = "/Afrinet/admin/admin.html";
+        }
+      });
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        auth
+          .signInWithEmailAndPassword(
+            loginForm.email.value,
+            loginForm.password.value
+          )
+          .catch(console.log);
+      });
+      function googleSignIn() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider).catch(console.log);
+      }
+    </script>
+  </body>
+</html>
