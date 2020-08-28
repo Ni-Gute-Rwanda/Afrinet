@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="admin.css" />
+    <title>Administrator's Pannel</title>
+  </head>
+  <body>
+    <div class="commentSection">
+      <button id="logout">logout</button>
+      <h1>Here are all comments from users</h1>
+      <div class="singleComment">
+        <div class="upper">
+          <h2 class="sender">Mansur</h2>
+          <p class="time">few second ago</p>
+        </div>
+        <p class="content">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint non
+          laudantium molestias eveniet dicta, beatae perferendis ex tempore,
+          dolorum accusamus veniam voluptas eaque vero vel at nihil iure
+          officiis itaque!
+        </p>
+        <div class="options">
+          <button class="delete opt-btn">delete</button>
+          <button class="show opt-btn">Show</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="firebase.js"></script>
+    <script>
+      const logoutBtn = document.querySelector("#logout");
+      auth.onAuthStateChanged(function (user) {
+        if (user) {
+        } else {
+          location.href = "/Afrinet/admin/login.html";
+        }
+      });
+
+      logoutBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        auth.signOut().catch(console.log);
+      });
+    </script>
+  </body>
+</html>
