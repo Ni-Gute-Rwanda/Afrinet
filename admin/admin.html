@@ -41,12 +41,10 @@
 
       const db = firebase.firestore();
       const clients = db.collection("Clients");
-      clients
-        .get()
-        .then(function (doc) {
-          let html = "";
-          doc.forEach((commenter) => {
-            html += `<div class="singleComment">
+      clients.onSnapshot(function (doc) {
+        let html = "";
+        doc.forEach((commenter) => {
+          html += `<div class="singleComment">
                         <div class="upper">
                           <h2 class="sender">${commenter.data().name}</h2>
                           <p class="time">${moment(
@@ -67,10 +65,10 @@
                     
                   </div>
                 </div>`;
-          });
-          comments.innerHTML = html;
-        })
-        .catch(console.log);
+        });
+        comments.innerHTML = html;
+      });
+      // .catch(console.log);
 
       function publish(id) {
         db.collection("Clients")
@@ -81,8 +79,6 @@
           .catch(console.log);
       }
       function unPublish(id) {
-        console.log(id);
-
         db.collection("Clients")
           .doc(id)
           .update({
