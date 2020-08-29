@@ -1,6 +1,6 @@
 /* common css */
 :root {
-  --main-color: #f8fcff;
+  --main-color: #f9feff;
   --secondary-color: #2d3f69;
   --link-color: rgb(239, 255, 11);
 }
@@ -13,6 +13,9 @@ html {
 }
 ::-webkit-scrollbar {
   width: 8px;
+}
+.admin-link {
+  color: black;
 }
 
 /* Track */

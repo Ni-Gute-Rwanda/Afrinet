@@ -411,10 +411,26 @@
       <h4 class="title">Contact Us</h4>
       <div class="contact-us-wraper">
         <form class="form">
-          <input type="email" placeholder="Your Name..." class="name" />
-          <input type="email" placeholder="Your Email..." class="email" />
-          <textarea name="comment" form="form">Enter text here...</textarea>
-          <button type="button" class="send">Send</button>
+          <input
+            type="text"
+            placeholder="Your Name..."
+            class="name"
+            name="name"
+            id="senderName"
+          />
+          <input
+            type="email"
+            placeholder="Your Email..."
+            class="email"
+            name="email"
+            id="senderEmail"
+          />
+          <textarea
+            name="comment"
+            id="senderMessage"
+            placeholder="Enter you message.."
+          ></textarea>
+          <button type="submit" class="send">Send</button>
         </form>
         <div class="testimonials">
           <div class="important-links">
@@ -499,9 +515,36 @@
             <span class="sp-span">Rwesamihigo</span></a
           >
         </h5>
-        <h5><span>#ntagaruriro</span></h5>
+        <h5>
+          <span>
+            <a href="./admin/login.html" class="admin-link">#ntagaruriro</a>
+          </span>
+        </h5>
       </div>
     </footer>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
+    <script src="./admin/firebase.js"></script>
     <script src="./js/index.js"></script>
+    <script>
+      const db = firebase.firestore();
+
+      const messageForm = document.querySelector(".form");
+      messageForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        db.collection("Clients")
+          .doc()
+          .set({
+            name: messageForm.name.value,
+            email: messageForm.email.value,
+            message: messageForm.comment.value,
+            time: Date.now(),
+          })
+          .then(function () {
+            console.log("Document successfully written!");
+          })
+          .catch(console.log);
+      });
+    </script>
   </body>
 </html>
