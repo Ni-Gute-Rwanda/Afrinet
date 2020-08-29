@@ -59,8 +59,12 @@
                     <button class="delete opt-btn">delete</button>
                     ${
                       commenter.data().public !== true
-                        ? `<button type="button" class="show opt-btn" onclick="publish('${commenter.id}')">Show</button>`
-                        : `<button type="button" class="show opt-btn" onclick="unPublish('${commenter.id}')">Hide</button>`
+                        ? `<button type="button" class="show opt-btn" onclick="publish('${
+                            commenter.id
+                          }',${true})">Show</button>`
+                        : `<button type="button" class="show opt-btn" onclick="publish('${
+                            commenter.id
+                          }',${false})">Hide</button>`
                     }
                     
                   </div>
@@ -70,19 +74,11 @@
       });
       // .catch(console.log);
 
-      function publish(id) {
+      function publish(id, state) {
         db.collection("Clients")
           .doc(id)
           .update({
-            public: true,
-          })
-          .catch(console.log);
-      }
-      function unPublish(id) {
-        db.collection("Clients")
-          .doc(id)
-          .update({
-            public: false,
+            public: state,
           })
           .catch(console.log);
       }
