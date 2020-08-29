@@ -57,12 +57,16 @@
                           commenter.data().message
                         }</p>
                         <h4 class="email">${commenter.data().email}</h4>
-                        <div class="options">
-                          <button class="delete opt-btn">delete</button>
-                          <button class="show opt-btn" ">Show</button>
-                        
-                        </div>
-                     </div>`;
+                  <div class="options">
+                    <button class="delete opt-btn">delete</button>
+                    ${
+                      commenter.data().public !== true
+                        ? `<button type="button" class="show opt-btn" onclick="publish('${commenter.id}')">Show</button>`
+                        : `<button type="button" class="show opt-btn" onclick="unPublish('${commenter.id}')">Hide</button>`
+                    }
+                    
+                  </div>
+                </div>`;
           });
           comments.innerHTML = html;
         })
@@ -77,6 +81,8 @@
           .catch(console.log);
       }
       function unPublish(id) {
+        console.log(id);
+
         db.collection("Clients")
           .doc(id)
           .update({
