@@ -11,16 +11,43 @@ body {
   background-color: var(--main-color);
   font-family: Arial, Helvetica, sans-serif;
 }
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 800px;
+  align-items: center;
+  margin-top: 1rem;
+}
+nav button {
+  padding: 0.3rem 2rem;
+  margin-left: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--link-color);
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 20px;
+}
+nav button:hover {
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  background-color: transparent;
+}
 h1 {
   color: var(--secondary-color);
   /* background-color: var(--secondary-color);
   padding: 0.6rem 0;
   border-radius: 52px; */
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 h2 {
   font-size: 1.5rem;
   color: var(--secondary-color);
+  text-transform: capitalize;
 }
 
 .login {
@@ -74,6 +101,7 @@ input:focus {
   width: 95%;
   max-width: 800px;
   margin: auto;
+  margin-top: 6rem;
 }
 .singleComment {
   border-radius: 5px;
@@ -92,5 +120,17 @@ input:focus {
   border-radius: 5px;
   padding: 0.4rem 0.6rem;
   background-color: var(--secondary-color);
-  /* margin-right: 1rem; */
+}
+.opt-btn:hover {
+  border: 1px solid var(--secondary-color);
+  background-color: transparent;
+  color: var(--secondary-color);
+}
+.email {
+  color: rgb(112, 108, 108);
+  margin-top: 1.2rem;
+}
+.each-testmonial {
+  box-shadow: 0 0 20px gray;
+  background: green;
 }

@@ -9,7 +9,6 @@ const firebaseConfig = {
   measurementId: "G-00L79WCX5T",
 };
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 const loginForm = document.querySelector("#login-form");
 const auth = firebase.auth();

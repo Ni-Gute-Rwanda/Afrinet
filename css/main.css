@@ -1,8 +1,8 @@
 /* common css */
 :root {
-  --main-color: #f8fcff;
-  --secondary-color: #293757;
-  --link-color: rgb(252, 236, 21);
+  --main-color: #f9feff;
+  --secondary-color: #2d3f69;
+  --link-color: rgb(239, 255, 11);
 }
 * {
   margin: 0;
@@ -13,6 +13,9 @@ html {
 }
 ::-webkit-scrollbar {
   width: 8px;
+}
+.admin-link {
+  color: black;
 }
 
 /* Track */
@@ -309,7 +312,7 @@ a {
   max-width: 800px;
   margin: auto;
   padding: 0.9rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
   text-align: center;
 }
 .testmonials-title {
@@ -319,7 +322,7 @@ a {
 }
 .testmonials-name {
   color: var(--secondary-color);
-  font-size: 1rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   padding-top: 0.8rem;
   font-style: italic;
@@ -502,6 +505,13 @@ button:focus {
 }
 .service-image {
   width: 100%;
+}
+.each-testmonial {
+  box-shadow: 0 0 4px gray;
+  border-radius: 5px;
+}
+.each-testmonial p {
+  margin-bottom: 1rem;
 }
 
 @media screen and (min-width: 700px) {

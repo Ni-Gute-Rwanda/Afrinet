@@ -8,28 +8,18 @@
   </head>
   <body>
     <div class="commentSection">
-      <button id="logout">logout</button>
+      <nav class="nav">
+        <h1 class="title">AFRINET</h1>
+        <button id="logout">logout</button>
+      </nav>
       <h1>Here are all comments from users</h1>
-      <div class="singleComment">
-        <div class="upper">
-          <h2 class="sender">Mansur</h2>
-          <p class="time">few second ago</p>
-        </div>
-        <p class="content">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint non
-          laudantium molestias eveniet dicta, beatae perferendis ex tempore,
-          dolorum accusamus veniam voluptas eaque vero vel at nihil iure
-          officiis itaque!
-        </p>
-        <div class="options">
-          <button class="delete opt-btn">delete</button>
-          <button class="show opt-btn">Show</button>
-        </div>
-      </div>
+      <div class="comments"></div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="firebase.js"></script>
     <script>
       const logoutBtn = document.querySelector("#logout");
@@ -44,6 +34,53 @@
         e.preventDefault();
         auth.signOut().catch(console.log);
       });
+
+      // getting data
+
+      const comments = document.querySelector(".comments");
+
+      const db = firebase.firestore();
+      const clients = db.collection("Clients");
+      clients.onSnapshot(function (doc) {
+        let html = "";
+        doc.forEach((commenter) => {
+          html += `<div class="singleComment">
+                        <div class="upper">
+                          <h2 class="sender">${commenter.data().name}</h2>
+                          <p class="time">${moment(
+                            commenter.data().time
+                          ).fromNow()}</p>
+                        </div>
+                        <p class="messageContent">${
+                          commenter.data().message
+                        }</p>
+                        <h4 class="email">${commenter.data().email}</h4>
+                  <div class="options">
+                    <button class="delete opt-btn">delete</button>
+                    ${
+                      commenter.data().public !== true
+                        ? `<button type="button" class="show opt-btn" onclick="publish('${
+                            commenter.id
+                          }',${true})">Show</button>`
+                        : `<button type="button" class="show opt-btn" onclick="publish('${
+                            commenter.id
+                          }',${false})">Hide</button>`
+                    }
+                    
+                  </div>
+                </div>`;
+        });
+        comments.innerHTML = html;
+      });
+
+      function publish(id, state) {
+        db.collection("Clients")
+          .doc(id)
+          .update({
+            public: state,
+          })
+          .catch(console.log);
+      }
     </script>
   </body>
 </html>

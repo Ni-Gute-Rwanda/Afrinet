@@ -3,8 +3,6 @@ const navLinks = document.querySelector(".nav-links");
 const readMore = document.querySelector(".read-more");
 const hidden = document.querySelector(".hidden");
 
-console.log(readMore, hidden);
-
 hamburger.addEventListener("click", () => {
   navLinks.classList.toggle("open");
 });
