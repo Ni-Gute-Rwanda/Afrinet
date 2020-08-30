@@ -130,3 +130,7 @@ input:focus {
   color: rgb(112, 108, 108);
   margin-top: 1.2rem;
 }
+.each-testmonial {
+  box-shadow: 0 0 20px gray;
+  background: green;
+}

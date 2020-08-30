@@ -400,12 +400,7 @@
     </section>
     <section class="testmonials">
       <h2 class="testmonials-title">Testimonials from Our customers</h2>
-      <p class="message">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam nisi
-        architecto, ipsa fugiat fuga aliquam dolorum sit ab incidunt
-        accusantium. Vel nihil dolor aliquid eum odit temporibus rem fuga animi!
-      </p>
-      <h3 class="testmonials-name">-mansour</h3>
+      <div class="testmonials-wrapper"></div>
     </section>
     <section class="contact" id="contact">
       <h4 class="title">Contact Us</h4>
@@ -432,7 +427,7 @@
           ></textarea>
           <button type="submit" class="send">Send</button>
         </form>
-        <div class="testimonials">
+        <div class="our-contacts">
           <div class="important-links">
             <span class="important"
               ><i class="fa fa-phone" aria-hidden="true">:</i>
@@ -544,6 +539,19 @@
             console.log("Document successfully written!");
           })
           .catch(console.log);
+      });
+      const tesmonialContainer = document.querySelector(".testmonials-wrapper");
+      db.collection("Clients").onSnapshot((comment) => {
+        let html = "";
+        comment.forEach((item) => {
+          html += ` <div class="each-testmonial">
+      <p class="message">
+        ${item.data().message}
+      </p>
+      <h3 class="testmonials-name">- ${item.data().name}</h3>
+      </div>`;
+        });
+        tesmonialContainer.innerHTML = html;
       });
     </script>
   </body>
