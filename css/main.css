@@ -519,3 +519,11 @@ button:focus {
     width: 380px;
   }
 }
+.validation {
+  color: red;
+}
+.success {
+  color: white;
+  background: rgb(78, 241, 78);
+  padding: 10px;
+}

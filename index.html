@@ -406,6 +406,8 @@
       <h4 class="title">Contact Us</h4>
       <div class="contact-us-wraper">
         <form class="form">
+          <div class="success-div"></div>
+
           <input
             type="text"
             placeholder="Your Name..."
@@ -425,6 +427,7 @@
             id="senderMessage"
             placeholder="Enter you message.."
           ></textarea>
+          <p class="validation"></p>
           <button type="submit" class="send">Send</button>
         </form>
         <div class="our-contacts">
@@ -525,34 +528,55 @@
       const db = firebase.firestore();
 
       const messageForm = document.querySelector(".form");
+      const notValidMsg = document.querySelector(".validation");
+      const validEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      const checkValidation = () => {
+        if (!messageForm.email.value.match(validEmail)) {
+          notValidMsg.innerHTML = `<i class="fa fa-times-circle" aria-hidden="true"></i> Please Enter a valid email`;
+        } else if (messageForm.name.value == "") {
+          notValidMsg.innerHTML = `<i class="fa fa-times-circle" aria-hidden="true"></i> Name should not be empty`;
+        } else if (messageForm.comment.value == "") {
+          notValidMsg.innerHTML = `<i class="fa fa-times-circle" aria-hidden="true"></i>Comment should not be empty`;
+        } else {
+          return true;
+        }
+      };
+
       messageForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        db.collection("Clients")
-          .doc()
-          .set({
-            name: messageForm.name.value,
-            email: messageForm.email.value,
-            message: messageForm.comment.value,
-            time: Date.now(),
-          })
-          .then(function () {
-            console.log("Document successfully written!");
-          })
-          .catch(console.log);
+        if (checkValidation()) {
+          db.collection("Clients")
+            .doc()
+            .set({
+              name: messageForm.name.value,
+              email: messageForm.email.value,
+              message: messageForm.comment.value,
+              public: false,
+              time: Date.now(),
+            })
+            .then(() => {
+              document.querySelector(
+                ".success-div"
+              ).innerHTML = `<p class="success"><i class="fa fa-check" aria-hidden="true"></i>Successfully sent! Thanks for your time</p>`;
+            })
+            .catch(console.log);
+        }
       });
       const tesmonialContainer = document.querySelector(".testmonials-wrapper");
-      db.collection("Clients").onSnapshot((comment) => {
-        let html = "";
-        comment.forEach((item) => {
-          html += ` <div class="each-testmonial">
+      db.collection("Clients")
+        .where("public", "==", true)
+        .onSnapshot((comment) => {
+          let html = "";
+          comment.forEach((item) => {
+            html += ` <div class="each-testmonial">
       <p class="message">
         ${item.data().message}
       </p>
-      <h3 class="testmonials-name">- ${item.data().name}</h3>
+      <h4 class="testmonials-name">- ${item.data().name}</h4>
       </div>`;
+          });
+          tesmonialContainer.innerHTML = html;
         });
-        tesmonialContainer.innerHTML = html;
-      });
     </script>
   </body>
 </html>
