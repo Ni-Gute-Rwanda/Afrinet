@@ -45,30 +45,32 @@
         let html = "";
         doc.forEach((commenter) => {
           html += `<div class="singleComment">
-                        <div class="upper">
-                          <h2 class="sender">${commenter.data().name}</h2>
-                          <p class="time">${moment(
-                            commenter.data().time
-                          ).fromNow()}</p>
+                              <div class="upper">
+                                <h2 class="sender">${commenter.data().name}</h2>
+                                <p class="time">${moment(
+                                  commenter.data().time
+                                ).fromNow()}</p>
+                              </div>
+                              <p class="messageContent">${
+                                commenter.data().message
+                              }</p>
+                              <h4 class="email">${commenter.data().email}</h4>
+                        <div class="options">
+                          <button class="delete opt-btn" type="button" onClick="deleteComment('${
+                            commenter.id
+                          }')">delete</button>
+                          ${
+                            commenter.data().public !== true
+                              ? `<button type="button" class="show opt-btn" onclick="publish('${
+                                  commenter.id
+                                }',${true})">Show</button>`
+                              : `<button type="button" class="show opt-btn" onclick="publish('${
+                                  commenter.id
+                                }',${false})">Hide</button>`
+                          }
+
                         </div>
-                        <p class="messageContent">${
-                          commenter.data().message
-                        }</p>
-                        <h4 class="email">${commenter.data().email}</h4>
-                  <div class="options">
-                    <button class="delete opt-btn">delete</button>
-                    ${
-                      commenter.data().public !== true
-                        ? `<button type="button" class="show opt-btn" onclick="publish('${
-                            commenter.id
-                          }',${true})">Show</button>`
-                        : `<button type="button" class="show opt-btn" onclick="publish('${
-                            commenter.id
-                          }',${false})">Hide</button>`
-                    }
-                    
-                  </div>
-                </div>`;
+                      </div>`;
         });
         comments.innerHTML = html;
       });
@@ -78,6 +80,15 @@
           .doc(id)
           .update({
             public: state,
+          })
+          .catch(console.log);
+      }
+      function deleteComment(id) {
+        db.collection("Clients")
+          .doc(id)
+          .delete()
+          .then(function () {
+            console.log("Document successfully deleted!");
           })
           .catch(console.log);
       }

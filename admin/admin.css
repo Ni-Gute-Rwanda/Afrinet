@@ -21,7 +21,9 @@ nav {
   right: 0;
   max-width: 800px;
   align-items: center;
-  margin-top: 1rem;
+  background: var(--main-color);
+  padding: 1rem;
+  border-bottom: solid 0.2px rgb(183, 220, 250);
 }
 nav button {
   padding: 0.3rem 2rem;
@@ -133,4 +135,9 @@ input:focus {
 .each-testmonial {
   box-shadow: 0 0 20px gray;
   background: green;
+}
+.time {
+  color: #858585;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
 }
