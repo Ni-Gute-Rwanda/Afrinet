@@ -401,6 +401,8 @@
     <section class="testmonials">
       <h2 class="testmonials-title">Testimonials from Our customers</h2>
       <div class="testmonials-wrapper"></div>
+      <a class="prev" onclick="changeSlide(-1)">❮</a>
+      <a class="next" onclick="changeSlide(1)">❯</a>
     </section>
     <section class="contact" id="contact">
       <h4 class="title">Contact Us</h4>
@@ -525,6 +527,34 @@
     <script src="./admin/firebase.js"></script>
     <script src="./js/index.js"></script>
     <script>
+      // testimonials slider
+
+      console.log(document.getElementsByClassName("each-testmonial"));
+      var slideIndex = 1;
+      showSlides(slideIndex);
+
+      function changeSlide(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("each-testmonial");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+      //testimonials slider ends here
+
       const db = firebase.firestore();
 
       const messageForm = document.querySelector(".form");
@@ -558,6 +588,7 @@
               document.querySelector(
                 ".success-div"
               ).innerHTML = `<p class="success"><i class="fa fa-check" aria-hidden="true"></i>Successfully sent! Thanks for your time</p>`;
+              notValidMsg.innerHTML = "";
             })
             .catch(console.log);
         }
