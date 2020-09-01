@@ -86,6 +86,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 .nav-links {
   display: flex;
@@ -528,6 +529,9 @@ button:focus {
   background: rgb(78, 241, 78);
   padding: 10px;
 }
+.testmonials-wrapper {
+  position: relative;
+}
 
 /* testimonials slide css */
 .prev,
@@ -541,6 +545,14 @@ button:focus {
   cursor: pointer;
   margin-right: 10px;
   user-select: none;
+  position: absolute;
+  top: 50%;
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
 }
 .prev:hover,
 .next:hover {

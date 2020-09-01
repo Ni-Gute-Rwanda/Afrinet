@@ -22,6 +22,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="firebase.js"></script>
     <script>
+      const auth = firebase.auth();
+
       const logoutBtn = document.querySelector("#logout");
       auth.onAuthStateChanged(function (user) {
         if (user) {

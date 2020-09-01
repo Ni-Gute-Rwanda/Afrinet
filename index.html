@@ -27,7 +27,7 @@
       </div>
       <!-- hamburger -->
       <ul class="nav-links open">
-        <li class="nav-link"><a href="">Home</a></li>
+        <li class="nav-link"><a href="#home">Home</a></li>
         <li class="nav-link"><a href="#service-sec">Services</a></li>
         <li class="nav-link"><a href="#about">About Us</a></li>
         <li class="nav-link">
@@ -41,7 +41,7 @@
 
     <section class="main-screen">
       <!-- end oh naviation -->
-      <div class="introduction">
+      <div class="introduction" id="home">
         <div class="intro">
           <h1 class="semi-light slogan">We Are African Network Group</h1>
           <p>We Create,</p>
@@ -400,9 +400,7 @@
     </section>
     <section class="testmonials">
       <h2 class="testmonials-title">Testimonials from Our customers</h2>
-      <div class="testmonials-wrapper"></div>
-      <a class="prev" onclick="changeSlide(-1)">❮</a>
-      <a class="next" onclick="changeSlide(1)">❯</a>
+      <div class="testmonials-wrapper"><div class="each-testmonial"></div></div>
     </section>
     <section class="contact" id="contact">
       <h4 class="title">Contact Us</h4>
@@ -531,15 +529,15 @@
 
       console.log(document.getElementsByClassName("each-testmonial"));
       var slideIndex = 1;
-      showSlides(slideIndex);
+      var slides = document.getElementsByClassName("each-testmonial");
+      showSlides(slideIndex, slides);
 
       function changeSlide(n) {
-        showSlides((slideIndex += n));
+        showSlides((slideIndex += n), slides);
       }
 
-      function showSlides(n) {
+      function showSlides(n, slides = []) {
         var i;
-        var slides = document.getElementsByClassName("each-testmonial");
         if (n > slides.length) {
           slideIndex = 1;
         }
@@ -599,14 +597,20 @@
         .onSnapshot((comment) => {
           let html = "";
           comment.forEach((item) => {
-            html += ` <div class="each-testmonial">
-      <p class="message">
-        ${item.data().message}
-      </p>
-      <h4 class="testmonials-name">- ${item.data().name}</h4>
-      </div>`;
+            html += `<div class="each-testmonial">
+              <p class="message">
+                ${item.data().message}
+              </p>
+              <h4 class="testmonials-name">- ${item.data().name}</h4>
+            </div>`;
           });
+          html += `<a class="prev" onclick="changeSlide(-1)">❮</a>
+      <a class="next" onclick="changeSlide(1)">❯</a>`;
           tesmonialContainer.innerHTML = html;
+          // setTimeout(() => {
+          var slides = document.getElementsByClassName("each-testmonial");
+          showSlides(slideIndex, slides);
+          // }, 1000);
         });
     </script>
   </body>
