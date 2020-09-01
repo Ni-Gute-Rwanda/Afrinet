@@ -27,7 +27,7 @@
       </div>
       <!-- hamburger -->
       <ul class="nav-links open">
-        <li class="nav-link"><a href="">Home</a></li>
+        <li class="nav-link"><a href="#home">Home</a></li>
         <li class="nav-link"><a href="#service-sec">Services</a></li>
         <li class="nav-link"><a href="#about">About Us</a></li>
         <li class="nav-link">
@@ -41,7 +41,7 @@
 
     <section class="main-screen">
       <!-- end oh naviation -->
-      <div class="introduction">
+      <div class="introduction" id="home">
         <div class="intro">
           <h1 class="semi-light slogan">We Are African Network Group</h1>
           <p>We Create,</p>
@@ -400,7 +400,7 @@
     </section>
     <section class="testmonials">
       <h2 class="testmonials-title">Testimonials from Our customers</h2>
-      <div class="testmonials-wrapper"></div>
+      <div class="testmonials-wrapper"><div class="each-testmonial"></div></div>
     </section>
     <section class="contact" id="contact">
       <h4 class="title">Contact Us</h4>
@@ -525,6 +525,34 @@
     <script src="./admin/firebase.js"></script>
     <script src="./js/index.js"></script>
     <script>
+      // testimonials slider
+
+      console.log(document.getElementsByClassName("each-testmonial"));
+      var slideIndex = 1;
+      var slides = document.getElementsByClassName("each-testmonial");
+      showSlides(slideIndex, slides);
+
+      function changeSlide(n) {
+        showSlides((slideIndex += n), slides);
+      }
+
+      function showSlides(n, slides = []) {
+        var i;
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+      //testimonials slider ends here
+
       const db = firebase.firestore();
 
       const messageForm = document.querySelector(".form");
@@ -558,6 +586,7 @@
               document.querySelector(
                 ".success-div"
               ).innerHTML = `<p class="success"><i class="fa fa-check" aria-hidden="true"></i>Successfully sent! Thanks for your time</p>`;
+              notValidMsg.innerHTML = "";
             })
             .catch(console.log);
         }
@@ -568,14 +597,20 @@
         .onSnapshot((comment) => {
           let html = "";
           comment.forEach((item) => {
-            html += ` <div class="each-testmonial">
-      <p class="message">
-        ${item.data().message}
-      </p>
-      <h4 class="testmonials-name">- ${item.data().name}</h4>
-      </div>`;
+            html += `<div class="each-testmonial">
+              <p class="message">
+                ${item.data().message}
+              </p>
+              <h4 class="testmonials-name">- ${item.data().name}</h4>
+            </div>`;
           });
+          html += `<a class="prev" onclick="changeSlide(-1)">❮</a>
+      <a class="next" onclick="changeSlide(1)">❯</a>`;
           tesmonialContainer.innerHTML = html;
+          // setTimeout(() => {
+          var slides = document.getElementsByClassName("each-testmonial");
+          showSlides(slideIndex, slides);
+          // }, 1000);
         });
     </script>
   </body>

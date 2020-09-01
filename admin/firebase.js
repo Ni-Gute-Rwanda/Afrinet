@@ -11,4 +11,3 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const loginForm = document.querySelector("#login-form");
-const auth = firebase.auth();
