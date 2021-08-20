@@ -1,3 +1,3 @@
 # Afrinet
  A website for African network group
-view thi here https://afrinet.netlify.app/
+view this here https://afrinet.netlify.app/
